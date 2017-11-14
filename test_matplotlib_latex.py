@@ -23,8 +23,7 @@ if False:
   plt.rc('text', usetex=True)
   plt.rc('font', family='serif')
 
-#FNs = 'serif'
-FNs = 'sans-serif'
+FNs = 'serif'
 
 def test_matplotlib_latex():
   x = np.arange(0.0, 2.0 * np.pi, 0.1)
