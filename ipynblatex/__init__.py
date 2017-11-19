@@ -14,7 +14,29 @@ for svr in notebookapp.list_running_servers():
     sys.path.append(nd)
     ipynb_dir = nd
     break
+
+__version__ = '.....'
 --------
 '''
 
-__version__ = '0.0.2'
+import sympy
+import numpy as np
+from matplotlib import pyplot as plt
+from IPython.display import display, Math, Latex
+
+class ipynbLatex(object):
+  def __init__(self):
+    self.lexpr = []
+
+  def setexpr(self, s=''):
+    self.lexpr.append(s)
+
+  def getlatex(self):
+    l = sympy.latex(''.join(self.lexpr))
+    self.lexpr = []
+    return l
+
+  def display(self, sl=None):
+    display(Math(sl if sl else self.getlatex()))
+
+__version__ = '1.0.1'
