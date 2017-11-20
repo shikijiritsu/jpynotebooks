@@ -28,15 +28,17 @@ class ipynbLatex(object):
   def __init__(self):
     self.lexpr = []
 
-  def setexpr(self, s=''):
-    self.lexpr.append(s)
+  def setexpr(self, ltxex=''):
+    self.lexpr.append(ltxex)
 
   def getlatex(self):
-    l = sympy.latex(''.join(self.lexpr))
+    ltx = ''.join(sympy.latex(_) for _ in self.lexpr)
     self.lexpr = []
-    return l
+    return ltx
 
-  def display(self, sl=None):
-    display(Math(sl if sl else self.getlatex()))
+  def display(self, ltxex=None, isltx=True):
+    if isltx: ltx = ltxex if ltxex else self.getlatex()
+    else: ltx = sympy.latex(ltxex) if ltxex else self.getlatex()
+    display(Math(ltx))
 
-__version__ = '1.0.1'
+__version__ = '1.1.1'
